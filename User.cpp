@@ -85,6 +85,10 @@ int User::getBalance(){
     return balance;
 }
 
+char* User::getName(){
+    return User::name;
+}
+
 void User::print(){
     cout<< name << endl << acc_no << endl;
 }
@@ -95,12 +99,16 @@ ostream& operator<<(ostream& os, User &user){
 }
 
 istream& operator>>(istream& is, User &user){
+    
     char name[20];
     int bal;
-    printf("enter name: ");
-    scanf("%[^\n]s", name);
-    printf("enter initial balance: ");
-    scanf("%d", &bal);
+    print_left("enter name: ");
+    // scanf("%[^\n]s", name);
+    is.getline(name, 20, '\n');
+    // is.getline(name, 20,  '\n');
+    print_left("enter initial balance: ");
+    // scanf("%d", &bal);
+    is >> bal;
     User u(name, bal);
     user = u;
     return is;

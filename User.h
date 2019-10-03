@@ -6,6 +6,8 @@
 #include <cstring>
 #include <list>
 #include <time.h>
+#include <limits>
+#include "common.h"
 
 using namespace std;
 
@@ -29,6 +31,7 @@ public:
     void deposit(int);
     void withdraw(int);
     int getBalance();
+    char* getName();
 
     friend ostream& operator<<(ostream& os, User &user);
     friend istream& operator>>(istream& is, User &user);

@@ -1,11 +1,14 @@
 #ifndef MACHINE_H
 #define MACHINE_H
 
-const int LEFT_MARGIN = 30;
-const int CENTRE = 40;
+#include "common.h"
+#include <iostream>
+#include <vector>
+#include "User.h"
 
-void left_margin();
-void centre();
 void displayLogo();
+void showMenu(char*);
+void createAccount();
+void withdraw();
 
 #endif

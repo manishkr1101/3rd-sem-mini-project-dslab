@@ -66,6 +66,11 @@ void User::updateName(char* newName){
     update();
 }
 
+void User::updatePin(int newPin){
+    pin = newPin;
+    update();
+}
+
 void User::deposit(int amt){
     balance += amt;
     updateBalance(balance);
@@ -87,6 +92,18 @@ void User::print(){
 ostream& operator<<(ostream& os, User &user){
     os<< "name: "<< user.name << endl << "a/c: " << user.acc_no <<"\npin: " << user.pin << "\nbalance: " << user.balance  << endl;
     return os;
+}
+
+istream& operator>>(istream& is, User &user){
+    char name[20];
+    int bal;
+    printf("enter name: ");
+    scanf("%[^\n]s", name);
+    printf("enter initial balance: ");
+    scanf("%d", &bal);
+    User u(name, bal);
+    user = u;
+    return is;
 }
 
 list<User> User::getUsers(){
@@ -182,5 +199,12 @@ User* User::login(int acc_no, int pin){
         return user;
     }
     return NULL;
+}
+
+void User::printAllUsers(){
+    list<User> users = User::getUsers();
+    for(auto user: users){
+        cout << user << endl;
+    }
 }
 

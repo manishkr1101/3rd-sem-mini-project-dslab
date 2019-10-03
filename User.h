@@ -21,8 +21,9 @@ public:
     ~User();
     void save(); //save user to file
     
-    void updateBalance(int);
+    
     void updateName(char*);
+    void updatePin(int);
     void print(); //print details of user
     void printStatement(); //print mini statement of user
     void deposit(int);
@@ -30,13 +31,18 @@ public:
     int getBalance();
 
     friend ostream& operator<<(ostream& os, User &user);
-    static list<User> getUsers(); //return list of all users
-    static User* find(int acc_no);
+    friend istream& operator>>(istream& is, User &user);
+    
+    static void printAllUsers();
     static User* login(int acc_no, int pin);
 private:
+
     void update();
+    void updateBalance(int);
+    static User* find(int acc_no);
     static int generateAccNo();// return next acc no to be created
     static int generatePin(); // return unique 4 digit pin
+    static list<User> getUsers(); //return list of all users
 };
 
 

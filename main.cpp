@@ -11,14 +11,17 @@ using namespace std;
 
 void test(){
     User::printAllUsers();
-    
+    // double num;
+    // cin>>num;
+    // string str = format(num);
+    // cout << str;
 }
 
 
 
 int main()
 {
-    // test();
+    test();
     // return 0;
     User::checkFile();
     clrscr();
@@ -41,7 +44,7 @@ int main()
     else if(ch == '2'){
         left_margin(); cout << "Enter your a/c : "; cin>>acc_no;
         left_margin(); cout << "Enter your pin : "; cin>>pin;
-        acc_no = 654358; pin = 1111;
+        acc_no = 654378; pin = 4200;
         User *user = User::login(acc_no, pin);
         if(user){
             // user successfuly logged in
@@ -64,12 +67,12 @@ int main()
                 {
                 case '1':
                     {
-                        int amount = withdraw();
+                        double amount = withdraw();
                         if(amount>0){
                             user->withdraw(amount);
                             newLine();
                             newLine();
-                            print_left("Rs." + to_string(amount) + " has been deducted succesfuly..");
+                            print_left(format(amount) + " has been deducted succesfuly..");
                         }
                         getch();
                     }
@@ -79,11 +82,11 @@ int main()
                         print_centre("DEPOSIT\n");
                         newLine();
                         print_left("Enter amount to deposite: ");
-                        int amount;
+                        double amount;
                         cin >> amount; getch();
                         user->deposit(amount);
 
-                        print_left("Rs. " + to_string(amount) + " deposited successfully...");
+                        print_left(format(amount) + " deposited successfully...");
                         getch();
 
                     }
@@ -108,7 +111,7 @@ int main()
                             print_centre("Your Current Balance is\n");
                             print_centre("    ");
                             
-                            cout << "Rs." << user->getBalance() ;
+                            cout << format(user->getBalance()) ;
                             getch();
                         }
 

@@ -62,7 +62,7 @@ void createAccount(){
 }
 
 
-int withdraw(){
+double withdraw(){
     print_centre("WITHDRAW\n");
     newLine();
     print_left("1. Saving Account\n");
@@ -72,7 +72,7 @@ int withdraw(){
     print_left("Enter choice: ");
     char ch;
     ch = getch();
-    int amount;
+    double amount;
     if(ch == '1' || ch == '2'){
         clrscr();
         newLine();

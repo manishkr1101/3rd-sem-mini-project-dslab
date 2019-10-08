@@ -7,7 +7,7 @@ User::User(){
 
 }
 
-User::User(char* _name, int _balance):balance(_balance) {
+User::User(char* _name, double _balance):balance(_balance) {
     strcpy(name, _name);
     acc_no = User::generateAccNo();
     pin = User::generatePin();
@@ -56,7 +56,7 @@ void User::update(){
 
 }
 
-void User::updateBalance(int newBalance){
+void User::updateBalance(double newBalance){
     balance = newBalance;
     update();
 }
@@ -75,17 +75,17 @@ bool User::updatePin(int oldPin, int newPin){
     return false;
 }
 
-void User::deposit(int amt){
+void User::deposit(double amt){
     balance += amt;
     updateBalance(balance);
 }
 
-void User::withdraw(int amt){
+void User::withdraw(double amt){
     balance -= amt;
     updateBalance(balance);
 }
 
-int User::getBalance(){
+double User::getBalance(){
     return balance;
 }
 
@@ -97,7 +97,7 @@ void User::print(){
     print_centre("NAME      : " + to_string(name) + "\n");
     print_centre("A/C       : " + to_string(acc_no) + "\n");
     print_centre("PIN       : " + to_string(pin) + "\n");
-    print_centre("BALANCE   : " + to_string(balance) + "\n");
+    print_centre("BALANCE   : " + format(balance) + "\n");
 }
 
 ostream& operator<<(ostream& os, User &user){
@@ -108,7 +108,7 @@ ostream& operator<<(ostream& os, User &user){
 istream& operator>>(istream& is, User &user){
     
     char name[20];
-    int bal;
+    double bal;
     print_left("Enter Name              : ");
     // scanf("%[^\n]s", name);
     is.getline(name, 20, '\n');

@@ -16,10 +16,10 @@ class User{
     char name[20];
     int acc_no;
     int pin;
-    int balance;
+    double balance;
 public:
     User();
-    User(char* _name, int _balance);
+    User(char* _name, double _balance);
     ~User();
     void save(); //save user to file
     
@@ -28,9 +28,9 @@ public:
     bool updatePin(int,int);
     void print(); //print details of user
     void printStatement(); //print mini statement of user
-    void deposit(int);
-    void withdraw(int);
-    int getBalance();
+    void deposit(double);
+    void withdraw(double);
+    double getBalance();
     char* getName();
 
     friend ostream& operator<<(ostream& os, User &user);
@@ -42,7 +42,7 @@ public:
 private:
 
     void update();
-    void updateBalance(int);
+    void updateBalance(double);
     static User* find(int acc_no);
     static int generateAccNo();// return next acc no to be created
     static int generatePin(); // return unique 4 digit pin

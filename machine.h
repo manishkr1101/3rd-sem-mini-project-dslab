@@ -9,6 +9,6 @@
 void displayLogo();
 void showMenu(char*);
 void createAccount();
-int withdraw();
+double withdraw();
 
 #endif

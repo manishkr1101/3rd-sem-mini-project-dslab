@@ -103,3 +103,11 @@ void to_upper(char* str){
     }
 }
 
+string format(double bal){
+    stringstream ss;
+    ss.imbue(locale("en_IN.utf8"));
+    ss << showbase <<  put_money(bal*100) << '\n';
+    string res;
+    getline(ss, res, '\n');
+    return res;
+}

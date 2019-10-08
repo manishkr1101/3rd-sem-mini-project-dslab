@@ -4,6 +4,7 @@
 #include <iostream>
 #include <termios.h>
 #include <stdio.h>
+#include <iomanip>
 
 inline void newLine(){std::cout<<'\n';}
 
@@ -25,5 +26,6 @@ void print_left(string str);
 void print_centre(string str);
 string to_string(char*);
 void to_upper(char*);
+string format(double);
 
 #endif

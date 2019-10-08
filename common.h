@@ -24,6 +24,6 @@ void centre();
 void print_left(string str);
 void print_centre(string str);
 string to_string(char*);
-
+void to_upper(char*);
 
 #endif

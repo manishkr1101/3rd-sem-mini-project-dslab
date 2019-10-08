@@ -94,3 +94,12 @@ string to_string(char* value){
     return str;
     
 }
+
+void to_upper(char* str){
+    int i=0;
+    while(str[i] != '\0'){
+        str[i] = toupper(str[i]);
+        i++;
+    }
+}
+

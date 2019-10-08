@@ -52,7 +52,8 @@ void createAccount(){
     User user;
     cin >> user;
     user.save();
-    cout <<endl << user;
+    cout <<endl ;
+    user.print();
     cout << endl;
     print_left("----------------------------------------------------------------------------------\n");
     print_left("User created successfuly.\n");
@@ -61,8 +62,30 @@ void createAccount(){
 }
 
 
-void withdraw(){
+int withdraw(){
+    print_centre("WITHDRAW\n");
+    newLine();
+    print_left("1. Saving Account\n");
+    print_left("2. Current Account\n");
+    print_left("x. Main menu\n");
+    newLine();
+    print_left("Enter choice: ");
+    char ch;
+    ch = getch();
+    int amount;
+    if(ch == '1' || ch == '2'){
+        clrscr();
+        newLine();
+        displayLogo();
+        newLine();
+        print_centre("Enter Amount\n");
+        print_centre("   ");
+        
+        cin >> amount;
+        getch();
+    }
 
+    return amount;
 }
 
 

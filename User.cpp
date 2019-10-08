@@ -66,9 +66,13 @@ void User::updateName(char* newName){
     update();
 }
 
-void User::updatePin(int newPin){
-    pin = newPin;
-    update();
+bool User::updatePin(int oldPin, int newPin){
+    if(oldPin == pin){
+        pin = newPin;
+        update();
+        return true;
+    }
+    return false;
 }
 
 void User::deposit(int amt){
@@ -90,7 +94,10 @@ char* User::getName(){
 }
 
 void User::print(){
-    cout<< name << endl << acc_no << endl;
+    print_centre("NAME      : " + to_string(name) + "\n");
+    print_centre("A/C       : " + to_string(acc_no) + "\n");
+    print_centre("PIN       : " + to_string(pin) + "\n");
+    print_centre("BALANCE   : " + to_string(balance) + "\n");
 }
 
 ostream& operator<<(ostream& os, User &user){
@@ -102,13 +109,19 @@ istream& operator>>(istream& is, User &user){
     
     char name[20];
     int bal;
-    print_left("enter name: ");
+    print_left("Enter Name              : ");
     // scanf("%[^\n]s", name);
     is.getline(name, 20, '\n');
+    to_upper(name);
     // is.getline(name, 20,  '\n');
-    print_left("enter initial balance: ");
+    print_left("Enter Initial Balance   : ");
     // scanf("%d", &bal);
     is >> bal;
+    // char bal_str[10];
+    // is.getline(bal_str, 10, '\n');
+    // bal = stoi(bal_str);
+    // print_centre("balace scanned");
+    // to_upper(name);
     User u(name, bal);
     user = u;
     return is;
@@ -150,6 +163,22 @@ list<User> User::getUsers(){
 }
 
 // STATIC FUNCTIONS
+
+void User::checkFile(){
+    fstream file(User::USERS_FILE_NAME);
+    if(!file.is_open()){
+        ofstream file(User::USERS_FILE_NAME, ios::out);
+        file.close();
+    }
+    file.close();
+
+    // check global.txt
+    file.open("global.txt");
+    if(!file.is_open()){
+        ofstream file("global.txt", ios::out);
+        file.close();
+    }
+}
 
 int User::generateAccNo(){
     ifstream file;

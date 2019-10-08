@@ -25,7 +25,7 @@ public:
     
     
     void updateName(char*);
-    void updatePin(int);
+    bool updatePin(int,int);
     void print(); //print details of user
     void printStatement(); //print mini statement of user
     void deposit(int);
@@ -38,6 +38,7 @@ public:
     
     static void printAllUsers();
     static User* login(int acc_no, int pin);
+    static void checkFile();
 private:
 
     void update();
